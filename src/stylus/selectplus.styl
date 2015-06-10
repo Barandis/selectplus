@@ -1,0 +1,177 @@
+/*!!
+ * Copyright (c) 2013-2015, Thomas J. Otterson
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+@import niblet
+
+.bar-sp
+  position        relative
+  display         inline-block
+  vertical-align  middle
+  zoom            1
+  *display        inline
+
+  .bar-sp-drop
+    absolute          top 29px left 0
+    border-top        0
+    box-shadow        0 4px 5px rgba(0, 0, 0, 0.15)
+    background-clip   padding-box
+
+  .bar-sp-with-drop
+    border-radius     bottom 0
+
+  .bar-sp-options
+    margin                      0 4px 4px 0
+    max-height                  240px
+    padding                     4px 4px 0 4px
+    position                    relative
+    overflow-x                  hidden
+    overflow-y                  auto
+    -webkit-overflow-scrolling  touch
+    li
+      margin          0
+      list-style      none
+      a.bar-sp-option
+        line-height   15px
+        padding       5px 6px
+      a.bar-sp-option-group
+        padding       5px 0
+        cursor        default
+      a.bar-sp-grouped-option
+        padding-left  15px
+    li.bar-sp-not-found
+      background      transparent
+      a
+        cursor        default
+
+.bar-sp-single
+  .bar-sp-selection
+    display         block
+    overflow        hidden
+    white-space     nowrap
+    position        relative
+    height          23px
+    line-height     24px
+    padding         0 0 0 8px
+    text-decoration none
+    span
+      margin-right  26px
+      display       block
+      overflow      ellipsis
+    div
+      absolute      top 4px right 0
+      width         18px
+    div.bar-sp-deselect
+      absolute      top 4px right 18px
+  .bar-sp-search
+    padding             3px 4px
+    position            relative
+    margin              0
+    white-space         nowrap
+    input
+      box-shadow        0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 rgba(255, 255, 255, 0.9)
+      margin            1px 0
+      padding           4px 5px
+      outline           0
+      border            1px solid #aaa
+
+.bar-sp-multi
+  .bar-sp-selections
+    background-color            #fff
+    box-shadow                  0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 rgba(255, 255, 255, 0.9)
+    border                      1px solid #aaa
+    margin                      0
+    padding                     0
+    cursor                      text
+    overflow                    hidden
+    height                      auto !important
+    height                      1%
+    position                    relative
+    li
+      float                     left
+      list-style                none
+    .bar-sp-search 
+      white-space               nowrap
+      margin                    0
+      padding                   0
+      input 
+        color                   #666
+        background              transparent !important
+        border                  0 !important
+        font-family             sans-serif
+        font-size               100%
+        height                 15px
+        padding                 5px
+        margin                  1px 0
+        outline                 0
+        box-shadow              none
+      .bar-sp-default 
+        color                   #999
+    .bar-sp-selection
+      line-height                 13px
+      padding                     3px 20px 3px 5px
+      margin                      3px 0 3px 5px
+      position                    relative
+      cursor                      default
+      .bar-sp-selection-close
+        display                   block
+        absolute                  top 2px right 1px
+        font-size                 1px
+
+
+.bar-sp.bar-sp-disabled
+  .bar-sp-selection, .bar-sp-selections, .bar-sp-search, .bar-sp-selection-close
+    cursor              default
+
+.bar-sp.bar-sp-rtl
+  text-align            right
+  .bar-sp-options 
+    margin                0 0 4px 4px
+    padding               4px 4px 0 4px
+    .bar-sp-grouped-option
+      padding-left          0
+      padding-right         15px
+  .bar-sp-search input
+    direction             rtl
+.bar-sp-single.bar-sp-rtl
+  .bar-sp-selection
+    padding               0 8px 0 0
+    overflow              visible
+    span
+      margin-left         26px
+      margin-right        0
+      direction           rtl 
+    div
+      left                3px
+      right               auto
+    div.bar-sp-deselect
+      left                18px
+.bar-sp-multi.bar-sp-rtl
+  .bar-sp-selections
+    li 
+      float                     right
+    .bar-sp-search input
+      direction                 rtl
+    .bar-sp-selection 
+      padding                   3px 5px 3px 19px
+      margin                    3px 5px 3px 0
+      .bar-sp-selection-close
+        left                    2px
+        right                   auto

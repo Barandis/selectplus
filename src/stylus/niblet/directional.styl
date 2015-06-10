@@ -1,0 +1,159 @@
+// =============================================================================
+// directional.styl
+// =============================================================================
+// Functions for added functionality in directional properties.
+// =============================================================================
+// "Directional properties" refers to properties that can have directional
+// components in their names. This file also includes 'border-radius', which can
+// have -two- directional components in its name and can be affected by vendor-
+// specific prefixes.
+//
+// A set of three properties that are aliases for 'position' are also included.
+// These are 'fixed', 'absolute', and 'relative', corresponding to three values
+// of 'position'. They take the same directional components as values and use
+// them to generate the appropriate directional properties ('top', 'bottom',
+// 'left', and/or 'right').
+// =============================================================================
+
+
+-apply-directional-property(prop, passed)
+  term = ()
+  augmented = false
+  contains-value = false
+  importance = get-importance(passed)
+
+  if prop in ('fixed' 'absolute' 'relative')
+    add-property('position', unquote(prop) importance)
+
+  for args in passed
+    for arg in args
+      // skip !important because it's handled above to cover all of a compound
+      // statement
+      if arg != !important
+        // No shortcutting in Stylus requires separate tests rather than
+        // anding them
+        if arg is a 'ident'
+          if arg in (top bottom right left)
+            augmented = true
+            if contains-value
+              -delegate-to-helper(prop, term, importance)
+              term = (arg)
+              contains-value = false
+            else
+              append(term, arg)
+          else
+            append(term, arg)
+            contains-value = true
+        else
+          append(term, arg)
+          contains-value = true
+  if augmented
+    // Since we're looking back rather than forward to cover properties with
+    // multiple values, we'll have one term left over at the end
+    -delegate-to-helper(prop, term, importance)
+  else
+    // Original syntax
+    if prop == 'border-radius' and is-supporting(support-legacy)
+      add-property('-webkit-border-radius', term importance)
+      add-property('-moz-border-radius', term importance)
+    if prop == 'border' and length(term) == 1
+      if term[0] is a 'color'
+        term = 1px solid term
+    add-property(prop, term importance)
+
+-delegate-to-helper(prop, term, importance)
+  if prop == 'border-radius'
+    -apply-single-border-radius-term(term, importance)
+  else if prop in ('fixed' 'absolute' 'relative')
+    -apply-positional-term(prop, term, importance)
+  else
+    -apply-single-augmented-term(prop, term, importance)
+
+-apply-single-augmented-term(prop, term, importance)
+  dirs = ()
+  values = ()
+  for arg in term
+    if arg in (top bottom left right)
+      append(dirs, arg)
+    else
+      append(values, arg)
+  for dir in dirs
+    if contains(prop, '-')
+      prefix = unquote(before(prop, '-'))
+      suffix = unquote(after(prop, '-'))
+      add-property('%s-%s-%s' % (prefix dir suffix), values importance)
+    else
+      if prop == 'border' and length(values) == 1
+        if values[0] is a 'color'
+          // shortcut for border terms containing only color
+          values = 1px solid values
+      add-property('%s-%s' % (unquote(prop) dir), values importance)
+
+// border-radius gets its own helper because it's the only one that uses two
+// directions in the same property name
+-apply-single-border-radius-term(term, importance)
+  if term[2] in (top bottom left right)
+    error('border-radius terms can have no more than two directions')
+  if term[1] in (top bottom left right)
+    values = slice(term, 2)
+    t0 = term[0]
+    t1 = term[1]
+    if t0 in (left right) and t1 in (top bottom)
+      t0 = term[1]
+      t1 = term[0]
+    else if !(t0 in (top bottom) and t1 in (left right))
+      error('border-radius must have one of (top bottom) and/or one of (left right)')
+    if is-supporting(support-legacy)
+      add-property('-webkit-border-%s-%s-radius' % (t0 t1), values importance)
+      add-property('-moz-border-radius-%s%s' % (t0 t1), values importance)
+    add-property('border-%s-%s-radius' % (t0 t1), values importance)
+  else if term[0] in (top bottom)
+    values = slice(term, 1)
+    -apply-single-border-radius-term(term[0] left values, importance)
+    -apply-single-border-radius-term(term[0] right values, importance)
+  else if term[0] in (left right)
+    unshift(term, top)
+    -apply-single-border-radius-term(term, importance)
+    term[0] = bottom
+    -apply-single-border-radius-term(term, importance)
+
+-apply-positional-term(prop, term, importance)
+  dirs = ()
+  values = ()
+  for arg in term
+    if arg in (top bottom left right)
+      append(dirs, arg)
+    else
+      append(values, arg)
+  for dir in dirs
+    add-property(dir, values importance)
+
+margin()
+  -apply-directional-property('margin', arguments)
+
+padding()
+  -apply-directional-property('padding', arguments)
+
+border()
+  -apply-directional-property('border', arguments)
+
+border-width()
+  -apply-directional-property('border-width', arguments)
+
+border-style()
+  -apply-directional-property('border-style', arguments)
+
+border-color()
+  -apply-directional-property('border-color', arguments)
+
+border-radius()
+  -apply-directional-property('border-radius', arguments)
+
+absolute()
+  -apply-directional-property('absolute', arguments)
+
+fixed()
+  -apply-directional-property('fixed', arguments)
+
+relative()
+  -apply-directional-property('relative', arguments)

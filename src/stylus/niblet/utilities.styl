@@ -1,0 +1,110 @@
+use("js/utilities.js")
+
+// Outputs vendor-prefixed properties according to support level and
+// properties requested.
+//
+// This also handles the normalization of some properties that have to be done
+// via JavaScript. These include transitions, border images, and gradients. If
+// normalization without vendorizing is desired, pass 'vendorize: false'.
+//
+// prop: the non-prefixed name of the property.
+// values: all of the values for that property.
+// legacy: a list of prefixes to include if the support level is support-legacy.
+// common: a list of prefixes to include if the support level is support-common.
+// latest: a list of prefixes to include if the support level is support-latest.
+// all: a list of prefixes to include for all support levels. This list is
+//    combined with the support-specific one above to generate a final prefix
+//    list.
+// spec: whether or not to include the non-prefixed spec property.
+// vendorize: whether or not to process vendor-specific properties at all. If
+//    this is false then normalization will still occur.
+vendor-property(prop, values, legacy = null, common = null, latest = null, all = null, spec = true, vendorize = true)
+  need-normalize = !vendorize or prop in ('transition' 'transition-property' 'border-image' 'border-image-slice')
+  limit = common
+  limit = legacy if test-support(support-legacy)
+  limit = latest if test-support(support-latest)
+  limit = () if limit is null
+  for prefix in all
+    append(limit, prefix) if !(prefix in limit)
+
+  for prefix in vendor-prefixes
+    if limit
+      if prefix in limit
+        newprop = prop
+        newprop = '-' + prefix + '-' + prop if vendorize
+
+        if need-normalize
+          {newprop}: normalize(prop, ('%s' % values), prefix)
+        else
+          {newprop}: values
+
+  if spec
+    if need-normalize
+      {prop}: normalize(prop, ('%s' % values))
+    else
+      {prop}: values
+
+// Outputs vendor-prefixed values according to support level and
+// properties and values requested.
+//
+// This is different from vendor-property in that it's only creating part of a
+// CSS rule. It outputs only the values, not the property names. Hence it has no
+// way to control whether or not a property is actually output...if processing
+// reveals that this function is to produce no output at all, the property name
+// will still be created, with a blank value and a semi-colon. Logic outside of
+// this function must be used to suppress property production altogether.
+//
+// values: all of the values to be output. Only the first will be prefixed.
+// legacy: a list of prefixes to include if the support level is support-legacy.
+// common: a list of prefixes to include if the support level is support-common.
+// latest: a list of prefixes to include if the support level is support-latest.
+// all: a list of prefixes to include for all support levels. This list is
+//    combined with the support-specific one above to generate a final prefix
+//    list.
+// spec: whether or not to include the non-prefixed spec value.
+vendor-value(values, legacy = null, common = null, latest = null, all = null, spec = true)
+  prop = current-property[0]
+  limit = common
+  limit = legacy if test-support(support-legacy)
+  limit = latest if test-support(support-latest)
+  limit = () if limit is null
+  for prefix in all
+    append(limit, prefix) if !(prefix in limit)
+  count = 0
+  final = ''
+  for prefix in vendor-prefixes
+    unless (limit and !(prefix in limit))
+      if spec
+        add-property(prop, '-%s-%s' % (prefix values))
+      else if count < length(limit) - 1
+        add-property(prop, '-%s-%s' % (prefix values))
+        count += 1
+      else
+        final = prefix
+  final is '' ? values : '-%s-%s' % (final values)
+
+is-width(value)
+  if value == auto
+    return true
+  else if value and value is a 'unit'
+    return unit(value) != ''
+  return false
+
+slice(array, index)
+  values = ()
+  for value, i in array
+    if i >= index
+      append(values, value)
+  values
+
+is-important()
+  arguments[length(arguments) - 1] is !important
+
+get-importance()
+  is-important(arguments) ? !important : unquote('')
+
+is-supporting()
+  return true if length(arguments) == 0
+  for arg in arguments
+    return true if support-level == arg
+  return false

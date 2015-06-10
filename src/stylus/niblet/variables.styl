@@ -1,0 +1,44 @@
+// =============================================================================
+// variables.styl
+// =============================================================================
+// Variables used globally throughout the rest of the library.
+// =============================================================================
+
+// All of the available prefixes used for vendor-specific functions.
+vendor-prefixes = webkit moz ms o
+
+// =============================================================================
+// Support levels
+// =============================================================================
+// These support levels are defined as follows:
+//
+// support-latest: The current version of each browser, plus the last released
+//                version, but nothing not in support-common
+// support-common: Browsers used by top 90% of Web traffic, or the most recent
+//                version if no version of that browser is in the top 90%
+// support-legacy: All resonably CSS-capable browsers
+// =============================================================================
+// Versions inclulded:
+// Browser              latest            common              legacy
+// -----------------------------------------------------------------------------
+// Internet Explorer    10+               8+                  5.5+
+// Firefox              24+               23+                 2+
+// Chrome               30+               29+                 4+
+// Safari               6.0+              5.1+                3.1+
+// Opera                17.0+             17.0+               9.0+
+// -----------------------------------------------------------------------------
+// IE Mobile            10+               10+                 10+
+// Firefox for Android  25+               25+                 25+
+// Chrome for Android   30+               30+                 30+
+// Safari for iOS       6.0+              6.0+                3.2+
+// Opera Mini           5.0+              5.0+                5.0+
+// Opera Mobile         16.0+             16.0+               10.0+
+// Android              4.2+              2.3+                2.1+
+// Blackberry           10.0+             10.0+               7.0+
+// =============================================================================
+
+support-legacy = 1
+support-common = 2
+support-latest = 3
+
+support-level = support-common

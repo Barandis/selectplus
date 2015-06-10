@@ -1,0 +1,57 @@
+// =============================================================================
+// misc.styl
+// =============================================================================
+// Small utilities and one-offs that don't readily fit into other modules
+// =============================================================================
+
+// =============================================================================
+// Background images
+// =============================================================================
+// Automatically loads a double-resolution image for backgrounds if the device's
+// pixel ratio is large enough.
+// =============================================================================
+
+image(path, path2x = null, w = auto, h = auto, ratio = 1.5)
+  background-image url(path)
+
+  s = 'only screen and (-webkit-min-device-pixel-ratio: ' + ratio + '), '
+  s = s + 'only screen and (min--moz-device-pixel-ratio: ' + ratio + '), ' if is-supporting(support-legacy)
+  s = s + 'only screen and (-o-min-device-pixel-ratio: ' + ratio + '/1), ' if is-supporting(support-legacy)
+  s = s + 'only screen and (min-device-pixel-ratio: ' + ratio + '), '
+  s = s + 'only screen and (min-resolution: ' + unit(ratio * 96, dpi) + '), '
+  s = s + 'only screen and (min-resolution: ' + unit(ratio, dppx) + ')'
+
+  @media s
+    if !path2x
+      ext = extname(path)
+      path2x = pathjoin(dirname(path), basename(path, ext) + '@2x' + ext)
+    background-image url(path2x)
+    h = null if w in (cover contain) and h is auto
+    background-size w h
+
+// =============================================================================
+// Overflow
+// =============================================================================
+// Add a value to overflow that causes text to be cut with an ellipsis ending
+// =============================================================================
+
+overflow()
+  if arguments[0] is ellipsis
+    ellipsis(important: is-important(arguments))
+  else
+    overflow arguments
+
+// =============================================================================
+// Size
+// =============================================================================
+// Sets width and height using only one statement, or one value if they're the
+// same
+// =============================================================================
+
+size()
+  importance = get-importance(arguments)
+  len = is-important(arguments) ? length(arguments) - 1 : length(arguments)
+  w = len > 0 ? arguments[0] : auto
+  h = len is 1 ? w : (len >= 2 ? arguments[1] : auto)
+  width w importance
+  height h importance

@@ -1,0 +1,159 @@
+// =============================================================================
+// flexbox.styl
+// =============================================================================
+// A module to abstract away the two syntaxes for flexboxes, as well as the
+// weird IE 10 hybrid syntax.
+// =============================================================================
+// NOTE: Support even at the support-common level here is incomplete. IE 8/9 do
+// not support flexboxes in any way. There is a fallback solution, but as it
+// involves conditional CSS, potential reordering of the content elements, and
+// fallback values for padding and width, it's just not feasible to provide a
+// one-size-fits-all solution here. It isn't even attempted.
+//
+// See http://designkarma.co.uk/blog/using-flexbox-now for a good treatment on
+// how to take care of IE 8 and 9.
+// =============================================================================
+
+-flex-legacy-direction(direction, args...)
+  if direction is row-reverse or direction is column-reverse
+    vendor-property('box-direction', reverse args, legacy: webkit moz, spec: false)
+  if direction is row or direction is row-reverse
+    vendor-property('box-orient', horizontal args, legacy: webkit moz, spec: false)
+  else if direction is column or direction is column-reverse
+    vendor-property('box-orient', vertical args, legacy: webkit moz, spec: false)
+
+-flex-legacy-wrap(value, args...)
+  // NOTE: there isn't a box equivalent of wrap-reverse, so rendering will be
+  // different between box and flex here.
+  if value is wrap or value is wrap-reverse
+    vendor-property('box-lines', multiple args, legacy: webkit moz, spec: false)
+  else if value is nowrap
+    vendor-property('box-lines', single args, legacy: webkit moz, spec: false)
+
+-convert-justification(just)
+  if just is flex-start
+    return start
+  else if just is flex-end
+    return end
+  else if just is space-around
+    return distribute
+  else if just is space-between
+    return justify
+  else
+    return just
+
+-convert-alignment(align)
+  if align is flex-start
+    return start
+  else if align is flex-end
+    return end
+  else
+    return align
+
+display(type, args...)
+  if type is flex
+    if is-supporting(support-legacy)
+      display vendor-value(box args, all: webkit moz, spec: false)
+    // required for IE 10. IE 11 uses standard syntax.
+    display -ms-flexbox args
+    // -webkit-flex overrides -webkit-box in newer browsers
+    display vendor-value(flex args, all: webkit)
+  // using else if here gives me a stack overflow for some reason
+  if type is inline-flex
+    if is-supporting(support-legacy)
+      display vendor-value(inline-box args, all: webkit moz, spec: false)
+    display -ms-inline-flexbox args
+    display vendor-value(inline-flex args, all: webkit)
+  if !(type in (flex inline-flex))
+    display arguments
+
+flex-direction(direction, args...)
+  -flex-legacy-direction(direction, args) if is-supporting(support-legacy)
+  vendor-property('flex-direction', arguments, all: webkit ms)
+
+flex-wrap(value, args...)
+  -flex-legacy-wrap(value, args) if is-supporting(support-legacy)
+  vendor-property('flex-wrap', arguments, all: webkit ms)
+
+// Shorthand for the previous two, supporting either order
+flex-flow()
+  if is-supporting(support-legacy)
+    args = slice(arguments, 2)
+    -flex-legacy-direction(arguments[0], args)
+    -flex-legacy-direction(arguments[1], args)
+    -flex-legacy-wrap(arguments[0], args)
+    -flex-legacy-wrap(arguments[1], args)
+  vendor-property('flex-flow', arguments, all: webkit ms)
+
+order()
+  vendor-property('box-ordinal-group', arguments, legacy: webkit moz, spec: false)
+  vendor-property('flex-order', arguments, all: ms, spec: false)
+  vendor-property('order', arguments, all: webkit)
+
+// flex-grow, flex-shrink, and flex-basis do not exist in IE 10, so there are
+// no -ms- prefixes specified. For IE 10 support, use the shortcut version
+// (flex), which does have an IE 10 analogue in -ms-flex.
+//
+// Additionally, there is no equivalent of flex-shrink and flex-basis in the
+// old spec. The flex() function compensates as much as it can.
+
+flex-grow()
+  vendor-property('box-flex', arguments, legacy: webkit moz, spec: false)
+  vendor-property('flex-grow', arguments, all: webkit)
+
+flex-shrink()
+  vendor-property('flex-shrink', arguments, all: webkit)
+
+flex-basis()
+  vendor-property('flex-basis', arguments, all: webkit)
+
+// IMPORTANT: include a fallback width BEFORE the call to flex() if you need to
+// support legacy browsers. Some will collapse even with a box-flex property
+// set if no width is provided.
+flex(growth, args...)
+  if is-supporting(support-legacy)
+    importance = get-importance(arguments)
+    shrink = 1
+    if growth is none or growth is initial
+      shrink = 0 if growth is none
+      growth = 0
+    else if is-width(growth)
+      // Basis is the first parameter
+      growth = arguments[1] or 0
+      shrink = arguments[2] if length(arguments) >= 3
+    else if arguments[1] and !is-width(arguments[1])
+      shrink = arguments[1]
+    vendor-property('box-flex', max(growth, shrink) importance, legacy: webkit moz, spec: false)
+  vendor-property('flex', arguments, all: webkit ms)
+
+justify-content()
+  just = arguments[0]
+  args = slice(arguments, 1)
+  value = -convert-justification(just)
+  // distribute isn't supported here, justify is closest
+  value = justify if value is distribute
+  vendor-property('box-pack', value args, legacy: webkit moz, spec: false)
+  vendor-property('flex-pack', value args, all: ms, spec: false)
+  vendor-property('justify-content', arguments, all: webkit)
+
+align-content()
+  align = arguments[0]
+  args = slice(arguments, 1)
+  // NOTE: Old spec doesn't support alignment change
+  // distribute -is- supported here, don't ask me
+  vendor-property('flex-line-pack', -convert-justification(align) args, all: ms, spec: false)
+  vendor-property('align-content', arguments, all: webkit)
+
+align-items()
+  align = arguments[0]
+  args = slice(arguments, 1)
+  vendor-property('box-align', -convert-alignment(align) args, legacy: webkit moz, spec: false)
+  vendor-property('flex-align', -convert-alignment(align) args, all: ms, spec: false)
+  vendor-property('align-items', arguments, all: webkit)
+
+align-self()
+  align = arguments[0]
+  args = slice(arguments, 1)
+  // NOTE: Old spec doesn't allow overriding alignment on individual items
+  vendor-property('flex-item-align', -convert-alignment(align) args, all: ms, spec: false)
+  vendor-property('align-self', arguments, all: webkit)

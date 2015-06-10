@@ -1,0 +1,21 @@
+// =============================================================================
+// clearfix.styl
+// =============================================================================
+// Utility to clear floats without resorting to structural markup.
+// =============================================================================
+// When an element is floated, it is removed from the flow of the layout and its
+// container no longer adjusts its height to accomodate it. The way to fix this
+// is with a clearfix.
+//
+// This clearfix comes from http://nicolasgallagher.com/micro-clearfix-hack/.
+// =============================================================================
+
+clearfix()
+  &:before
+  &:after
+    content ""
+    display table
+    font 0/0 a
+  &:after
+    clear both
+  zoom 1 if is-supporting(support-legacy)

@@ -1,0 +1,284 @@
+// =============================================================================
+// vendor.styl
+// =============================================================================
+// Provides support for browser versions through vendor prefixes.
+// =============================================================================
+// The purpose of this file is to provide support for every CSS property or
+// value that might require vendor prefixes such as -webkit- or -moz-. There are
+// some additional functions that are added to vendor-prefixed properties, and
+// those are included in this file as well.
+//
+// The 'support-level' setting is obviously key to which vendor prefixes get
+// displayed. Be sure that it's set properly before calling any of these.
+//
+// Gradients are handled in gradients.styl instead, while border-radius is taken
+// care of in directional.styl. Flexboxes are handled in flexbox.styl.
+// =============================================================================
+
+// =============================================================================
+// Animations
+// =============================================================================
+-animation-helper(prop, args...)
+  vendor-property(prop, args, all: webkit, legacy: moz o)
+
+animation()
+  -animation-helper('animation', arguments)
+
+animation-name()
+  -animation-helper('animation-name', arguments)
+
+animation-duration()
+  -animation-helper('animation-duration', arguments)
+
+animation-timing-function()
+  -animation-helper('animation-timing-function', arguments)
+
+animation-delay()
+  -animation-helper('animation-delay', arguments)
+
+animation-iteration-count()
+  -animation-helper('animation-iteration-count', arguments)
+
+animation-direction()
+  -animation-helper('animation-direction', arguments)
+
+animation-play-state()
+  -animation-helper('animation-play-state(', arguments)
+
+// =============================================================================
+// Transforms
+// =============================================================================
+
+-transform-helper(prop, args...)
+  vendor-property(prop, args, all: webkit, legacy: moz ms o, common: ms)
+
+transform()
+  -transform-helper('transform', arguments)
+
+transform-origin()
+  -transform-helper('transform-origin', arguments)
+
+// IE and old Opera don't support his one since they don't do 3D transforms
+transform-style()
+  vendor-property('transform-style', arguments, all: webkit, legacy: moz)
+
+// =============================================================================
+// Transitions
+// =============================================================================
+
+-transition-helper(prop, args...)
+  vendor-property(prop, args, all: webkit, legacy: moz o)
+
+transition()
+  -transition-helper('transition', arguments)
+
+transition-property()
+  -transition-helper('transition-property', arguments)
+
+transition-duration()
+  -transition-helper('transition-duration', arguments)
+
+transition-timing-function()
+  -transition-helper('transition-timing-function', arguments)
+
+transition-delay()
+  -transition-helper('transition-delay', arguments)
+
+// =============================================================================
+// Background image manipulation
+// =============================================================================
+
+-background-image-helper(prop, passed...)
+  legacy-args = ()
+  importance = unquote('')
+  for args in passed
+    for arg in args
+      arg = unquote('border') if arg == border-box
+      arg = unquote('content') if arg == content-box
+      arg = unquote('padding') if arg == padding-box
+      if arg == !important
+        importance = !important
+      else
+        push(legacy-args, arg)
+  vendor-property(prop, unquote(join(', ', legacy-args)) importance, legacy: webkit moz, common: webkit, spec: false)
+
+background-clip()
+  if arguments[0] == text
+    vendor-property('background-clip', arguments, legacy: webkit moz o, common: webkit)
+  else
+    -background-image-helper('background-clip', arguments)
+    vendor-property('background-clip', arguments, legacy: o)
+
+background-origin()
+  -background-image-helper('background-origin', arguments)
+  vendor-property('background-origin', arguments, legacy: o)
+
+background-size()
+  vendor-property('background-size', arguments, legacy: webkit moz o, common: webkit)
+
+// =============================================================================
+// Border images
+// =============================================================================
+// This has seen a lot of recent movement. Until very recently, only the
+// shorthand property was supported in any browser, but some now support the
+// individual properties. IE had no support until 11, but IE11 supports all of
+// the properties.
+// =============================================================================
+
+-border-image-helper(prop, args...)
+  vendor-property(prop, args, legacy: webkit)
+
+border-image()
+  vendor-property('border-image', arguments, all: webkit, legacy: moz o)
+
+border-image-source()
+  -border-image-helper('border-image-source', arguments)
+
+border-image-slice()
+  -border-image-helper('border-image-slice', arguments)
+
+border-image-width()
+  -border-image-helper('border-image-width', arguments)
+
+border-image-outset()
+  -border-image-helper('border-image-outset', arguments)
+
+border-image-repeat()
+  -border-image-helper('border-image-repeat', arguments)
+
+// =============================================================================
+// Column layout
+// =============================================================================
+
+-column-break-helper(prop, args...)
+  vendor-property('column-' + prop, args, all: webkit, spec: false)
+  vendor-property(prop, args)
+
+-column-helper(prop, args...)
+  vendor-property(prop, args, all: webkit moz)
+
+column-fill()
+  -column-helper('column-fill', arguments)
+
+column-gap()
+  -column-helper('column-gap', arguments)
+
+column-rule()
+  -column-helper('column-rule', arguments)
+
+column-rule-width()
+  -column-helper('column-rule-width', arguments)
+
+column-rule-style()
+  -column-helper('column-rule-style', arguments)
+
+column-rule-color()
+  -column-helper('column-rule-color', arguments)
+
+columns()
+  -column-helper('columns', arguments)
+
+column-width()
+  -column-helper('column-width', arguments)
+
+column-count()
+  -column-helper('column-count', arguments)
+
+column-span()
+  -column-helper('column-span', arguments)
+
+break-before()
+  -column-break-helper('break-before', arguments)
+
+break-inside()
+  -column-break-helper('break-inside', arguments)
+
+break-after()
+  -column-break-helper('break-after', arguments)
+
+// =============================================================================
+// Grid layout
+// =============================================================================
+// Currently supported only by IE 10/11 (!). There are a lot of unusual values
+// so you should be prepared to use unquote().
+// =============================================================================
+
+grid-columns()
+  vendor-property('grid-columns', arguments, all: ms)
+
+grid-rows()
+  vendor-property('grid-rows', arguments, all: ms)
+
+// =============================================================================
+// Placeholders
+// =============================================================================
+// These are unusual in that there isn't an W3C spec, and they're handled by
+// pseudo-elements or pseudo-selectors. Note that Firefox changed its method in
+// Firefox 19, so there's an additional -moz rule for support-legacy.
+// =============================================================================
+
+placeholder()
+  pseudos = (':-moz' ':-webkit-input' '-ms-input')
+  prepend(pseudos, '-moz') if is-supporting(support-legacy)
+  for pseudo in pseudos
+    &:{pseudo}-placeholder
+      for arg in arguments
+        if arg is a 'function'
+          prop = arg[0]
+          values = slice(arg, 1)
+          prop(values)
+        else if arg is not null
+          if arg[0] is not null
+            prop = arg[0]
+            values = slice(arg, 1)
+            {prop}: values
+
+// =============================================================================
+// Miscellaneous
+// =============================================================================
+
+appearance()
+  vendor-property('appearance', arguments, all: webkit moz)
+
+backface-visibility()
+  vendor-property('backface-visibility', arguments, all: webkit moz ms)
+
+perspective()
+  vendor-property('perspective', arguments, all: webkit, legacy: moz)
+
+perspective-origin()
+  vendor-property('perspective-origin', arguments, all: webkit, legacy: moz)
+
+box-shadow()
+  vendor-property('box-shadow', arguments, legacy: webkit moz, common: webkit)
+
+box-sizing()
+  vendor-property('box-sizing', arguments, all: moz, legacy: webkit, common: webkit)
+
+hyphens()
+  vendor-property('hyphens', arguments, all: webkit moz ms)
+
+opacity(n, args...)
+  opacity n args
+  if current-property
+    val = round(n * 100)
+    if val >= 100
+      -ms-filter none
+      filter none if is-supporting(support-legacy)
+    else
+      -ms-filter '"progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)"' % val args
+      filter 'alpha(opacity=%s)' % val args if is-supporting(support-legacy)
+
+resize()
+  vendor-property('resize', arguments, legacy: moz)
+
+// Only Opera Mini has used a prefix in the last 5 years, but it still does. Grr.
+text-overflow()
+  vendor-property('text-overflow', arguments, all: o)
+
+// This is non-standard and is therefore not safe to use, but a lot of people do anyway.
+user-select()
+  vendor-property('user-select', arguments, all: webkit moz ms)
+
+tab-size()
+  vendor-property('tab-size', arguments, legacy: moz o)

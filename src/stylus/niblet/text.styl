@@ -1,0 +1,35 @@
+// =============================================================================
+// text.styl
+// =============================================================================
+// Utilities for text-related functions
+// =============================================================================
+
+// Aliases that normalize whether or not dashes are needed (both are fine)
+no-wrap = unquote('nowrap')
+
+whitespace()
+  white-space arguments
+
+// Function to cause overflows to create ellipses
+ellipsis(wrap = false, important = false)
+  importance = important ? !important : unquote('')
+  white-space nowrap importance unless wrap
+  overflow hidden importance
+  text-overflow ellipsis importance
+
+// Hide text within an element
+text-hide(important = false)
+  importance = important ? !important : unquote('')
+  font 0/0 a importance
+  color transparent importance
+  background-color transparent importance
+  text-shadow none importance
+  border 0 importance
+
+// Replace text with an image
+text-replace(image, x = 50%, y = 50%, important = false)
+  importance = important ? !important : unquote('')
+  text-hide(important: important)
+  background-image image importance
+  background-repeat no-repeat importance
+  background-position x y importance
