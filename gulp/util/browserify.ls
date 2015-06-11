@@ -21,7 +21,7 @@ module.exports = (callback, dev) !->
 
     browserified = through2.obj (file, enc, next) !->
       browserify file.path
-        .transform \lsify
+        .transform \lsify, config.ls[ if dev then \dev else \prod ]
         .bundle (err, res) !->
           file.contents = res
           next null, file

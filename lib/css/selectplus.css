@@ -1,8 +1,8 @@
-/* line 177 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 177 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
-/* line 1 : C:\Projects\selectplus\node_modules\gulp-stylus\node_modules\stylus\lib\functions\index.styl */
+/* line 1 : /home/barandis/dev/projects/selectplus/node_modules/gulp-stylus/node_modules/stylus/lib/functions/index.styl */
 
-/* line 1 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 1 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 /*!
  * Copyright (c) 2013-2015, Thomas J. Otterson
@@ -26,43 +26,43 @@
  * THE SOFTWARE.
  */
 
-/* line 286 : C:\Projects\selectplus\node_modules\gulp-stylus\node_modules\stylus\lib\functions\index.styl */
+/* line 286 : /home/barandis/dev/projects/selectplus/node_modules/gulp-stylus/node_modules/stylus/lib/functions/index.styl */
 
-/* line 10 : C:\Projects\selectplus\src\stylus\niblet\index.styl */
+/* line 10 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/index.styl */
 
-/* line 10 : C:\Projects\selectplus\src\stylus\niblet\index.styl */
+/* line 10 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/index.styl */
 
-/* line 8 : C:\Projects\selectplus\src\stylus\niblet\variables.styl */
+/* line 8 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/variables.styl */
 
-/* line 44 : C:\Projects\selectplus\src\stylus\niblet\variables.styl */
+/* line 44 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/variables.styl */
 
-/* line 29 : C:\Projects\selectplus\src\stylus\niblet\utilities.styl */
+/* line 29 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/utilities.styl */
 
-/* line 110 : C:\Projects\selectplus\src\stylus\niblet\utilities.styl */
+/* line 110 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/utilities.styl */
 
-/* line 29 : C:\Projects\selectplus\src\stylus\niblet\clearfix.styl */
+/* line 29 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/clearfix.styl */
 
-/* line 21 : C:\Projects\selectplus\src\stylus\niblet\clearfix.styl */
+/* line 21 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/clearfix.styl */
 
-/* line 29 : C:\Projects\selectplus\src\stylus\niblet\vendor.styl */
+/* line 29 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/vendor.styl */
 
-/* line 284 : C:\Projects\selectplus\src\stylus\niblet\vendor.styl */
+/* line 284 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/vendor.styl */
 
-/* line 8 : C:\Projects\selectplus\src\stylus\niblet\text.styl */
+/* line 8 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/text.styl */
 
-/* line 35 : C:\Projects\selectplus\src\stylus\niblet\text.styl */
+/* line 35 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/text.styl */
 
-/* line 29 : C:\Projects\selectplus\src\stylus\niblet\directional.styl */
+/* line 29 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/directional.styl */
 
-/* line 159 : C:\Projects\selectplus\src\stylus\niblet\directional.styl */
+/* line 159 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/directional.styl */
 
-/* line 29 : C:\Projects\selectplus\src\stylus\niblet\flexbox.styl */
+/* line 29 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/flexbox.styl */
 
-/* line 159 : C:\Projects\selectplus\src\stylus\niblet\flexbox.styl */
+/* line 159 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/flexbox.styl */
 
-/* line 29 : C:\Projects\selectplus\src\stylus\niblet\misc.styl */
+/* line 29 : /home/barandis/dev/projects/selectplus/src/stylus/niblet/misc.styl */
 
-/* line 24 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 24 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp {
   position: relative;
@@ -72,7 +72,7 @@
   *display: inline;
 }
 
-/* line 31 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 31 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp .bar-sp-drop {
   position: absolute;
@@ -83,14 +83,14 @@
   background-clip: padding-box;
 }
 
-/* line 37 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 37 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp .bar-sp-with-drop {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-/* line 40 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 40 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp .bar-sp-options {
   margin: 0 4px 4px 0;
@@ -102,48 +102,48 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* line 48 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 48 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp .bar-sp-options li {
   margin: 0;
   list-style: none;
 }
 
-/* line 51 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 51 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp .bar-sp-options li a.bar-sp-option {
   line-height: 15px;
   padding: 5px 6px;
 }
 
-/* line 54 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 54 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp .bar-sp-options li a.bar-sp-option-group {
   padding: 5px 0;
   cursor: default;
 }
 
-/* line 57 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 57 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp .bar-sp-options li a.bar-sp-grouped-option {
   padding-left: 15px;
 }
 
-/* line 59 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 59 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp .bar-sp-options li.bar-sp-not-found {
   background: transparent;
 }
 
-/* line 61 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 61 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp .bar-sp-options li.bar-sp-not-found a {
   cursor: default;
 }
 
-/* line 64 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 64 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
-/* line 65 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 65 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-single .bar-sp-selection {
   display: block;
@@ -156,7 +156,7 @@
   text-decoration: none;
 }
 
-/* line 74 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 74 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-single .bar-sp-selection span {
   margin-right: 26px;
@@ -167,7 +167,7 @@
   text-overflow: ellipsis;
 }
 
-/* line 78 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 78 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-single .bar-sp-selection div {
   position: absolute;
@@ -176,7 +176,7 @@
   width: 18px;
 }
 
-/* line 81 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 81 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-single .bar-sp-selection div.bar-sp-deselect {
   position: absolute;
@@ -184,7 +184,7 @@
   right: 18px;
 }
 
-/* line 83 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 83 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-single .bar-sp-search {
   padding: 3px 4px;
@@ -193,7 +193,7 @@
   white-space: nowrap;
 }
 
-/* line 88 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 88 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-single .bar-sp-search input {
   box-shadow: 0 1px 3px rgba(0,0,0,0.4) inset, 0 1px 0 rgba(255,255,255,0.9);
@@ -203,9 +203,9 @@
   border: 1px solid #aaa;
 }
 
-/* line 95 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 95 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
-/* line 96 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 96 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-multi .bar-sp-selections {
   background-color: #fff;
@@ -220,14 +220,14 @@
   position: relative;
 }
 
-/* line 107 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 107 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-multi .bar-sp-selections li {
   float: left;
   list-style: none;
 }
 
-/* line 110 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 110 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-multi .bar-sp-selections .bar-sp-search {
   white-space: nowrap;
@@ -235,7 +235,7 @@
   padding: 0;
 }
 
-/* line 114 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 114 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-multi .bar-sp-selections .bar-sp-search input {
   color: #666;
@@ -250,13 +250,13 @@
   box-shadow: none;
 }
 
-/* line 125 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 125 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-multi .bar-sp-selections .bar-sp-search .bar-sp-default {
   color: #999;
 }
 
-/* line 127 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 127 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-multi .bar-sp-selections .bar-sp-selection {
   line-height: 13px;
@@ -266,7 +266,7 @@
   cursor: default;
 }
 
-/* line 133 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 133 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-multi .bar-sp-selections .bar-sp-selection .bar-sp-selection-close {
   display: block;
@@ -276,9 +276,9 @@
   font-size: 1px;
 }
 
-/* line 139 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 139 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
-/* line 140 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 140 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp.bar-sp-disabled .bar-sp-selection,
 .bar-sp.bar-sp-disabled .bar-sp-selections,
@@ -287,42 +287,42 @@
   cursor: default;
 }
 
-/* line 143 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 143 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp.bar-sp-rtl {
   text-align: right;
 }
 
-/* line 145 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 145 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp.bar-sp-rtl .bar-sp-options {
   margin: 0 0 4px 4px;
   padding: 4px 4px 0 4px;
 }
 
-/* line 148 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 148 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp.bar-sp-rtl .bar-sp-options .bar-sp-grouped-option {
   padding-left: 0;
   padding-right: 15px;
 }
 
-/* line 151 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 151 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp.bar-sp-rtl .bar-sp-search input {
   direction: rtl;
 }
 
-/* line 153 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 153 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
-/* line 154 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 154 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-single.bar-sp-rtl .bar-sp-selection {
   padding: 0 8px 0 0;
   overflow: visible;
 }
 
-/* line 157 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 157 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-single.bar-sp-rtl .bar-sp-selection span {
   margin-left: 26px;
@@ -330,43 +330,43 @@
   direction: rtl;
 }
 
-/* line 161 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 161 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-single.bar-sp-rtl .bar-sp-selection div {
   left: 3px;
   right: auto;
 }
 
-/* line 164 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 164 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-single.bar-sp-rtl .bar-sp-selection div.bar-sp-deselect {
   left: 18px;
 }
 
-/* line 166 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 166 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
-/* line 167 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 167 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
-/* line 168 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 168 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-multi.bar-sp-rtl .bar-sp-selections li {
   float: right;
 }
 
-/* line 170 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 170 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-multi.bar-sp-rtl .bar-sp-selections .bar-sp-search input {
   direction: rtl;
 }
 
-/* line 172 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 172 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-multi.bar-sp-rtl .bar-sp-selections .bar-sp-selection {
   padding: 3px 5px 3px 19px;
   margin: 3px 5px 3px 0;
 }
 
-/* line 175 : C:\Projects\selectplus\src\stylus\main.styl */
+/* line 175 : /home/barandis/dev/projects/selectplus/src/stylus/main.styl */
 
 .bar-sp-multi.bar-sp-rtl .bar-sp-selections .bar-sp-selection .bar-sp-selection-close {
   left: 2px;

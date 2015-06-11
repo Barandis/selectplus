@@ -9,8 +9,8 @@ export
   
   start = (path) !->
     start := process.hrtime!
-    gutil.log "Compiling #{gutil.colors.green path}..."
+    gutil.log "Bundling #{gutil.colors.green path}..."
 
   end = (path) !->
     time = process.hrtime start
-    gutil.log "Compiled #{gutil.colors.green path} in #{gutil.colors.magenta pretty time}"
+    gutil.log "Bundled #{gutil.colors.green path} in #{gutil.colors.magenta pretty time}"

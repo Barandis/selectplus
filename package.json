@@ -1,11 +1,12 @@
 {
   "name": "selectplus",
-  "version": "0.6.0",
+  "version": "0.6.3",
   "description": "Full-featured JQuery UI compatible replacement for select controls and selectmenu",
   "dependencies": {},
   "devDependencies": {
     "LiveScript": "~1.3.1",
     "browserify": "~10.2.4",
+    "del": "^1.2.0",
     "gulp": "~3.9.0",
     "gulp-bump": "~0.3.1",
     "gulp-concat-css": "~2.2.0",
@@ -22,6 +23,7 @@
     "lsify": "^0.1.1",
     "pretty-hrtime": "~1.0.0",
     "require-dir": "~0.3.0",
+    "run-sequence": "^1.1.0",
     "through2": "^2.0.0"
   },
   "engine": "node >= 0.10.0",

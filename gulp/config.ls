@@ -24,6 +24,10 @@ export
       ...
 
   ls =
+    dev:
+      bare: yes
+    prod:
+      bare: yes
     bundles:
       * src: "#{src.ls}/main.ls"
         dest: dest.js
