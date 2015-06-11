@@ -1,0 +1,374 @@
+/* line 177 : C:\Projects\selectplus\src\stylus\main.styl */
+
+/* line 1 : C:\Projects\selectplus\node_modules\gulp-stylus\node_modules\stylus\lib\functions\index.styl */
+
+/* line 1 : C:\Projects\selectplus\src\stylus\main.styl */
+
+/*!
+ * Copyright (c) 2013-2015, Thomas J. Otterson
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/* line 286 : C:\Projects\selectplus\node_modules\gulp-stylus\node_modules\stylus\lib\functions\index.styl */
+
+/* line 10 : C:\Projects\selectplus\src\stylus\niblet\index.styl */
+
+/* line 10 : C:\Projects\selectplus\src\stylus\niblet\index.styl */
+
+/* line 8 : C:\Projects\selectplus\src\stylus\niblet\variables.styl */
+
+/* line 44 : C:\Projects\selectplus\src\stylus\niblet\variables.styl */
+
+/* line 29 : C:\Projects\selectplus\src\stylus\niblet\utilities.styl */
+
+/* line 110 : C:\Projects\selectplus\src\stylus\niblet\utilities.styl */
+
+/* line 29 : C:\Projects\selectplus\src\stylus\niblet\clearfix.styl */
+
+/* line 21 : C:\Projects\selectplus\src\stylus\niblet\clearfix.styl */
+
+/* line 29 : C:\Projects\selectplus\src\stylus\niblet\vendor.styl */
+
+/* line 284 : C:\Projects\selectplus\src\stylus\niblet\vendor.styl */
+
+/* line 8 : C:\Projects\selectplus\src\stylus\niblet\text.styl */
+
+/* line 35 : C:\Projects\selectplus\src\stylus\niblet\text.styl */
+
+/* line 29 : C:\Projects\selectplus\src\stylus\niblet\directional.styl */
+
+/* line 159 : C:\Projects\selectplus\src\stylus\niblet\directional.styl */
+
+/* line 29 : C:\Projects\selectplus\src\stylus\niblet\flexbox.styl */
+
+/* line 159 : C:\Projects\selectplus\src\stylus\niblet\flexbox.styl */
+
+/* line 29 : C:\Projects\selectplus\src\stylus\niblet\misc.styl */
+
+/* line 24 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  *display: inline;
+}
+
+/* line 31 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp .bar-sp-drop {
+  position: absolute;
+  top: 29px;
+  left: 0;
+  border-top: 0;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.15);
+  background-clip: padding-box;
+}
+
+/* line 37 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp .bar-sp-with-drop {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* line 40 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp .bar-sp-options {
+  margin: 0 4px 4px 0;
+  max-height: 240px;
+  padding: 4px 4px 0 4px;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* line 48 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp .bar-sp-options li {
+  margin: 0;
+  list-style: none;
+}
+
+/* line 51 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp .bar-sp-options li a.bar-sp-option {
+  line-height: 15px;
+  padding: 5px 6px;
+}
+
+/* line 54 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp .bar-sp-options li a.bar-sp-option-group {
+  padding: 5px 0;
+  cursor: default;
+}
+
+/* line 57 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp .bar-sp-options li a.bar-sp-grouped-option {
+  padding-left: 15px;
+}
+
+/* line 59 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp .bar-sp-options li.bar-sp-not-found {
+  background: transparent;
+}
+
+/* line 61 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp .bar-sp-options li.bar-sp-not-found a {
+  cursor: default;
+}
+
+/* line 64 : C:\Projects\selectplus\src\stylus\main.styl */
+
+/* line 65 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-single .bar-sp-selection {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  height: 23px;
+  line-height: 24px;
+  padding: 0 0 0 8px;
+  text-decoration: none;
+}
+
+/* line 74 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-single .bar-sp-selection span {
+  margin-right: 26px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+/* line 78 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-single .bar-sp-selection div {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  width: 18px;
+}
+
+/* line 81 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-single .bar-sp-selection div.bar-sp-deselect {
+  position: absolute;
+  top: 4px;
+  right: 18px;
+}
+
+/* line 83 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-single .bar-sp-search {
+  padding: 3px 4px;
+  position: relative;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* line 88 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-single .bar-sp-search input {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4) inset, 0 1px 0 rgba(255,255,255,0.9);
+  margin: 1px 0;
+  padding: 4px 5px;
+  outline: 0;
+  border: 1px solid #aaa;
+}
+
+/* line 95 : C:\Projects\selectplus\src\stylus\main.styl */
+
+/* line 96 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-multi .bar-sp-selections {
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4) inset, 0 1px 0 rgba(255,255,255,0.9);
+  border: 1px solid #aaa;
+  margin: 0;
+  padding: 0;
+  cursor: text;
+  overflow: hidden;
+  height: auto !important;
+  height: 1%;
+  position: relative;
+}
+
+/* line 107 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-multi .bar-sp-selections li {
+  float: left;
+  list-style: none;
+}
+
+/* line 110 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-multi .bar-sp-selections .bar-sp-search {
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 114 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-multi .bar-sp-selections .bar-sp-search input {
+  color: #666;
+  background: transparent !important;
+  border: 0 !important;
+  font-family: sans-serif;
+  font-size: 100%;
+  height: 15px;
+  padding: 5px;
+  margin: 1px 0;
+  outline: 0;
+  box-shadow: none;
+}
+
+/* line 125 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-multi .bar-sp-selections .bar-sp-search .bar-sp-default {
+  color: #999;
+}
+
+/* line 127 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-multi .bar-sp-selections .bar-sp-selection {
+  line-height: 13px;
+  padding: 3px 20px 3px 5px;
+  margin: 3px 0 3px 5px;
+  position: relative;
+  cursor: default;
+}
+
+/* line 133 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-multi .bar-sp-selections .bar-sp-selection .bar-sp-selection-close {
+  display: block;
+  position: absolute;
+  top: 2px;
+  right: 1px;
+  font-size: 1px;
+}
+
+/* line 139 : C:\Projects\selectplus\src\stylus\main.styl */
+
+/* line 140 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp.bar-sp-disabled .bar-sp-selection,
+.bar-sp.bar-sp-disabled .bar-sp-selections,
+.bar-sp.bar-sp-disabled .bar-sp-search,
+.bar-sp.bar-sp-disabled .bar-sp-selection-close {
+  cursor: default;
+}
+
+/* line 143 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp.bar-sp-rtl {
+  text-align: right;
+}
+
+/* line 145 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp.bar-sp-rtl .bar-sp-options {
+  margin: 0 0 4px 4px;
+  padding: 4px 4px 0 4px;
+}
+
+/* line 148 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp.bar-sp-rtl .bar-sp-options .bar-sp-grouped-option {
+  padding-left: 0;
+  padding-right: 15px;
+}
+
+/* line 151 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp.bar-sp-rtl .bar-sp-search input {
+  direction: rtl;
+}
+
+/* line 153 : C:\Projects\selectplus\src\stylus\main.styl */
+
+/* line 154 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-single.bar-sp-rtl .bar-sp-selection {
+  padding: 0 8px 0 0;
+  overflow: visible;
+}
+
+/* line 157 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-single.bar-sp-rtl .bar-sp-selection span {
+  margin-left: 26px;
+  margin-right: 0;
+  direction: rtl;
+}
+
+/* line 161 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-single.bar-sp-rtl .bar-sp-selection div {
+  left: 3px;
+  right: auto;
+}
+
+/* line 164 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-single.bar-sp-rtl .bar-sp-selection div.bar-sp-deselect {
+  left: 18px;
+}
+
+/* line 166 : C:\Projects\selectplus\src\stylus\main.styl */
+
+/* line 167 : C:\Projects\selectplus\src\stylus\main.styl */
+
+/* line 168 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-multi.bar-sp-rtl .bar-sp-selections li {
+  float: right;
+}
+
+/* line 170 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-multi.bar-sp-rtl .bar-sp-selections .bar-sp-search input {
+  direction: rtl;
+}
+
+/* line 172 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-multi.bar-sp-rtl .bar-sp-selections .bar-sp-selection {
+  padding: 3px 5px 3px 19px;
+  margin: 3px 5px 3px 0;
+}
+
+/* line 175 : C:\Projects\selectplus\src\stylus\main.styl */
+
+.bar-sp-multi.bar-sp-rtl .bar-sp-selections .bar-sp-selection .bar-sp-selection-close {
+  left: 2px;
+  right: auto;
+}
