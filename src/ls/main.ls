@@ -275,7 +275,7 @@ let $ = jQuery
       # widget was assigned to, it's used in creating the container ID. If 
       # there is not, the base of the ID consists of 6 random alphanumeric 
       # characters. (string)
-      @container-id         = (if @element.attr \id .length
+      @container-id         = (if @element.attr \id
                                then @element.attr \id .replace /[^\w]/g \-
                                else @_generate-container-id!) + \-selectplus
 
@@ -596,12 +596,11 @@ let $ = jQuery
     # such objects (which is empty if no selection has been made).
     #
     # This is a read-only method. It cannot be used to set the value, in large 
-    # part because of the many different ways that's possible in such a 
-    # versatile widget. To set values, set them in the backing data itself 
-    # (either the original option elements or the JSON data array). if this is
-    # done directly on the option elements and not by passing new data, then
-    # refresh will need to be called to make the widget update (this is done
-    # automatically when data is set).
+    # part because of the many different ways that's possible. To set values, 
+    # set them in the backing data itself (either the original option elements 
+    # or the JSON data array). if this is done directly on the option elements 
+    # and not by passing new data, then refresh will need to be called to make 
+    # the widget update (this is done automatically when data is set).
     value: -> 
       | @multiple           => [@_sanitize-item item for item in @current-value]
       | not @current-value  => null
