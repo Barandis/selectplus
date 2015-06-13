@@ -43,6 +43,12 @@ let $ = jQuery
 
   $.widget \barandis.selectplus,
 
+    ###########################################################################
+    ##
+    ## WIDGET OPTIONS
+    ##
+    ###########################################################################
+
     # Remember that this is LiveScript, and when it's compiled into JavaScript, 
     # dashed identifiers are replaced with camel-cased ones. Therefore, for 
     # instance, the property will be maxSelected rather than the max-selected 
@@ -217,6 +223,18 @@ let $ = jQuery
         else
           @_super key, value
 
+    ###########################################################################
+    ##
+    ## END WIDGET OPTIONS
+    ##
+    ###########################################################################
+
+    ###########################################################################
+    ##
+    ## WIDGET CREATION
+    ##
+    ###########################################################################
+
     # Creation involves setting up the HTML for the widget, which is separate 
     # from the HTML of a select element that the widget is built from. The 
     # original select element is hidden, but it remains part of the DOM. For 
@@ -227,7 +245,10 @@ let $ = jQuery
     # Events are also set up in creation, and the framework fires off a 'create'
     # event at the end.
     _create: !->
+
+      #########################################################################
       # MEMBER FIELDS
+
       # All of the member fields are listed here for the sake of documentation.
 
       # Indicates whether this is a multi-select widget. If false, a single-
@@ -305,7 +326,8 @@ let $ = jQuery
       @document-click-action      = null
       @backspace-action           = null
 
-      # END OF MEMBER FIELDS
+      #########################################################################
+      # HTML CREATION
 
       container-classes = <[ ui-widget bar-sp ]>
       container-classes.push \bar-sp- + (if @multiple then \multi else \single)
@@ -369,6 +391,9 @@ let $ = jQuery
           height: @selection.outer-height!
           width: @selection.outer-width!
 
+      #########################################################################
+      # EVENT HANDLER OBJECTS
+
       # Basic click action for the container as a whole, which basically just 
       # cleans things up and opens the dropdown.
       @container-click-action = (event) !~>
@@ -427,6 +452,9 @@ let $ = jQuery
               @backspace-action event
             else
               @pending-deselection.add-class \ui-state-focus
+
+      #########################################################################
+      # EVENT TRIGGER SETUP
 
       # Event handlers for the container in general. As one might expect, these 
       # are very general, handling only mouseover events and the status flag 
@@ -575,6 +603,18 @@ let $ = jQuery
              not @open
             @_open-dropdown!
 
+    ###########################################################################
+    ##
+    ## END WIDGET CREATION
+    ##
+    ###########################################################################
+
+    ###########################################################################
+    ##
+    ## WIDGET DESTRUCTION
+    ##
+    ###########################################################################
+
     # Destroy is clean in this widget. Creation is simply undone. The old 
     # tabindex (which had been removed from the original element) is restored, 
     # the widgets is removed, and the original element is shown. In theory, 
@@ -584,6 +624,18 @@ let $ = jQuery
       @_revert-tab-index!
       @container.remove!
       @element.show!
+
+    ###########################################################################
+    ##
+    ## END WIDGET DESCRUTCTION
+    ##
+    ###########################################################################
+
+    ###########################################################################
+    ##
+    ## PUBLIC METHODS
+    ##
+    ###########################################################################
 
     # Returns the current value of the widget, meaning the data elements that 
     # are selected. Internal fields (any that begin with an underscore) are 
@@ -629,6 +681,18 @@ let $ = jQuery
     # Clears any selected options. Events are still fired when these selections 
     # are cleared.
     clear: !-> @_reset-options!
+
+    ###########################################################################
+    ##
+    ## END PUBLIC METHODS
+    ##
+    ###########################################################################
+
+    ###########################################################################
+    ##
+    ## WIDGET BUILDING
+    ##
+    ###########################################################################
 
     # Builds the objects and HTML for all of the elements inside the dropdown. 
     # It does not deselect any options already selected, so the widget's state 
@@ -741,6 +805,18 @@ let $ = jQuery
       link.mouseup !~>
         @clicked = no
 
+    ###########################################################################
+    ##
+    ## END WIDGET BUILDING
+    ##
+    ###########################################################################
+
+    ###########################################################################
+    ##
+    ## DROPDOWN OPERATIONS
+    ##
+    ###########################################################################
+
     # Opens the dropdown so that the options (and the search field, in a 
     # single-select control) can be viewed.
     _open-dropdown: !->
@@ -819,6 +895,18 @@ let $ = jQuery
 
         if old-value is not null
           @_trigger \change, event, item: null data: null 
+
+    ###########################################################################
+    ##
+    ## END DROPDOWN OPERATIONS
+    ##
+    ###########################################################################
+
+    ###########################################################################
+    ##
+    ## OPTION SELECTION
+    ##
+    ###########################################################################
 
     # Selects the specified option. Aside from simply making the selection, 
     # this adds the option's data to current-value, removes the highlight, and 
@@ -972,6 +1060,18 @@ let $ = jQuery
       option.parent!add-class \ui-helper-hidden
       option.attr \aria-hidden \true
 
+    ###########################################################################
+    ##
+    ## END OPTION SELECTION
+    ##
+    ###########################################################################
+
+    ###########################################################################
+    ##
+    ## WIDGET ACTIVATION
+    ##
+    ###########################################################################
+
     # Activates the widget by giving it the appropriate classes and focusing 
     # the search field.
     _activate-widget: (event) !->
@@ -995,6 +1095,18 @@ let $ = jQuery
 
       @_set-search-field-default!
       @_resize-search-field!
+
+    ###########################################################################
+    ##
+    ## END WIDGET ACTIVATION
+    ##
+    ###########################################################################
+
+    ###########################################################################
+    ##
+    ## OPTION FILTERING
+    ##
+    ###########################################################################
 
     # Applies the text in the search field to the available options, hiding all 
     # of those that don't match the search and highlighting the portion of the 
@@ -1085,6 +1197,18 @@ let $ = jQuery
     # Clears the not-found message from the DOM
     _clear-not-found: !->
       @select-options.find \.bar-sp-not-found .remove!
+
+    ###########################################################################
+    ##
+    ## END WIDGET OPTIONS
+    ##
+    ###########################################################################
+
+    ###########################################################################
+    ##
+    ## UTILITY FUNCTIONS
+    ##
+    ###########################################################################
 
     # Handles both the disabling and the enabling of the widget. This sets the 
     # disabled CSS class to the container and explicitly disables the search 
@@ -1209,6 +1333,18 @@ let $ = jQuery
         result[key] = value if key.index-of(\_) is not 0
       result
 
+    ###########################################################################
+    ##
+    ## END UTILITY FUNCTIONS
+    ##
+    ###########################################################################
+
+    ###########################################################################
+    ##
+    ## DATA PARSING
+    ##
+    ###########################################################################
+
     # Parses data into a model. This data can come either from the data option 
     # or a backing select element and its children.
     _parse: ->
@@ -1325,3 +1461,9 @@ let $ = jQuery
       for node in element.child-nodes
         add-node node
       model
+
+    ###########################################################################
+    ##
+    ## END DATA PARSING
+    ##
+    ###########################################################################
