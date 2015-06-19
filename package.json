@@ -1,6 +1,6 @@
 {
   "name": "selectplus",
-  "version": "0.6.9",
+  "version": "0.6.10",
   "description": "Full-featured JQuery UI compatible replacement for select controls and selectmenu",
   "dependencies": {},
   "devDependencies": {
