@@ -21,7 +21,7 @@
  * @license
  */
 
-$ <-! ((factory) !->
+$ <- ((factory) !->
   if typeof define is \function and define.amd
     define <[ jquery jquery-ui/core jquery-ui/widget ]> factory
   else if typeof exports is \object
